@@ -12,9 +12,17 @@
             overflow: hidden;
         }
 
-        .slide {
-            height: 100vh;
+        #slides {
+            display: flex;
+            flex-direction: row; /* Slides move horizontally */
             width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            scroll-snap-type: x mandatory; /* Enable smooth horizontal scrolling */
+        }
+
+        .slide {
+            flex: 0 0 100%; /* Each slide takes full width */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -41,11 +49,6 @@
         p {
             max-width: 800px;
             padding: 0 1em;
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
         }
 
         /* Navigation Buttons */
@@ -200,6 +203,12 @@
         <div class="slide">
             <h1>Check Schoology</h1>
         </div>
+        <div class="slide">
+            <h1>Graph or Chart</h1>
+            <p>
+                Include your graph or chart representation as needed here. (Placeholder for your visuals.)
+            </p>
+        </div>
     </div>
 
     <!-- Navigation Buttons -->
@@ -212,7 +221,7 @@
         let currentSlide = 0;
 
         const showSlide = (index) => {
-            slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
+            slides[currentSlide].scrollIntoView({ behavior: 'smooth', inline: 'start' });
         };
 
         document.getElementById('nextBtn').addEventListener('click', () => {
@@ -223,6 +232,17 @@
         document.getElementById('prevBtn').addEventListener('click', () => {
             if (currentSlide > 0) currentSlide--;
             showSlide(currentSlide);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ‘ArrowRight' && currentSlide < slides.length - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
         });
     </script>
 </body>
