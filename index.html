@@ -1,219 +1,302 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEM Project 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* General Styling */
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        .carousel {
-            display: flex;
-            transition: transform 0.8s ease-in-out;
-        }
-        .slide {
-            min-width: 100%;
-            flex-shrink: 0;
-            box-sizing: border-box;
-            padding: 20px;
-            background: white;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        .slide.active {
-            opacity: 1;
-        }
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            transform: translateY(-50%);
-        }
-        .nav-buttons button {
-            background: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .nav-buttons button:hover {
-            background: #0056b3;
-        }
-        .nav-buttons button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        /* Navigation Dots */
-        .dots {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            margin: 5px;
-            background-color: #ddd;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .dot.active {
-            background-color: #007BFF;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Carousel -->
-        <div class="carousel">
-            <!-- Slide 1 -->
-            <div class="slide active">
-                <h1>STEM Project 2025</h1>
-                <p>By: Bola Wahba</p>
-                <p>Date: 11/25/24</p>
-            </div>
-            <!-- Slide 2 -->
-            <div class="slide">
-                <h2>What Problem Needs to Be Solved?</h2>
-                <p>
-                    Access to sustainable and cost-effective cooking solutions is limited in areas where 
-                    conventional energy sources are scarce or expensive. Additionally, traditional cooking 
-                    methods often rely on fuels like wood or gas, contributing to environmental degradation 
-                    and air pollution. A solar oven addresses these challenges by harnessing sunlight as a 
-                    clean, renewable energy source for cooking.
-                </p>
-            </div>
-            <!-- Slide 3 -->
-            <div class="slide">
-                <h2>Design Requirements (Part 1)</h2>
-                <ul>
-                    <li>Efficient Heat Retention: Trap and maintain heat effectively to cook food.</li>
-                    <li>Light Reflection: Reflective surfaces must direct sunlight into the box.</li>
-                    <li>Insulation: Proper insulation is needed to minimize heat loss.</li>
-                    <li>Compact and Lightweight: The design must be portable and easy to set up.</li>
-                </ul>
-            </div>
-            <!-- Slide 4 -->
-            <div class="slide">
-                <h2>Design Requirements (Part 2)</h2>
-                <ul>
-                    <li>Safety: Materials used should be safe to handle.</li>
-                    <li>Cost-Effectiveness: Use inexpensive materials like pizza boxes and foil.</li>
-                    <li>Simplicity: Construction should be simple for beginners.</li>
-                    <li>Durability: Oven should withstand outdoor conditions.</li>
-                </ul>
-            </div>
-            <!-- Slide 5 -->
-            <div class="slide">
-                <h2>Constraints (Part 1)</h2>
-                <ul>
-                    <li>Budget: Use affordable, household materials.</li>
-                    <li>Time: Construction should take less than an hour.</li>
-                    <li>Materials: Use lightweight, low-cost, and heat-safe items.</li>
-                    <li>Weather Dependence: Rely entirely on sunlight.</li>
-                </ul>
-            </div>
-            <!-- Slide 6 -->
-            <div class="slide">
-                <h2>Constraints (Part 2)</h2>
-                <ul>
-                    <li>Size: Oven must balance size for food and heat retention.</li>
-                    <li>Heat Limitation: Moderate temperatures for light cooking only.</li>
-                    <li>User Skill Level: Simple enough for children with adult supervision.</li>
-                </ul>
-            </div>
-            <!-- Slide 7 -->
-            <div class="slide">
-                <h2>Brainstorm: Pizza Box Solar Oven</h2>
-                <p>
-                    Description: A pizza box with aluminum foil lining and black construction paper 
-                    absorbs heat, with plastic wrap trapping it inside.
-                </p>
-            </div>
-            <!-- Slide 13 -->
-            <div class="slide">
-                <h2>Photo Placeholder</h2>
-                <p>Photo to be added later (different spot).</p>
-            </div>
-            <!-- Slide 16 -->
-            <div class="slide">
-                <h2>Photo Placeholder</h2>
-                <p>Photo to be added later (different spot).</p>
-            </div>
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+
+const NavigationButton = ({ onClick, disabled, direction }) => (
+  <button
+    onClick={onClick}
+    disabled={disabled}
+    className={`p-2 rounded-full hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed ${
+      disabled ? 'text-gray-400' : 'text-gray-700'
+    }`}
+  >
+    {direction === 'left' ? <ChevronLeft size={24} /> : <ChevronRight size={24} />}
+  </button>
+);
+
+const SlideProgress = ({ current, total }) => (
+  <div className="text-gray-600">
+    Slide {current + 1} of {total}
+  </div>
+);
+
+const SolarOvenPresentation = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      title: "STEM project 2025",
+      content: (
+        <div className="space-y-4">
+          <h1 className="text-4xl font-bold">STEM project 2025</h1>
+          <p className="text-xl">Bola Wahba</p>
+          <p className="text-xl">304</p>
+          <p className="text-xl">11/25/24</p>
+        </div>
+      )
+    },
+    {
+      title: "What problem needs to be solved?",
+      content: (
+        <div className="space-y-4">
+          <p className="text-lg leading-relaxed">
+            Access to sustainable and cost-effective cooking solutions is limited in areas where
+            conventional energy sources are scarce or expensive. Additionally, traditional cooking
+            methods often rely on fuels like wood or gas, contributing to environmental degradation
+            and air pollution. A solar oven addresses these challenges by harnessing sunlight as a
+            clean, renewable energy source for cooking.
+          </p>
+        </div>
+      )
+    },
+    {
+      title: "Design Requirements pt 1",
+      content: (
+        <div className="grid gap-4">
+          {[
+            { title: "Efficient Heat Retention", desc: "The oven must be able to trap and maintain heat effectively to cook food, such as chocolate, using only sunlight." },
+            { title: "Light Reflection", desc: "Reflective surfaces must direct sunlight into the box to maximize heat." },
+            { title: "Insulation", desc: "Proper insulation is needed to minimize heat loss and retain warmth inside the box." },
+            { title: "Compact and Lightweight", desc: "The design must be portable and easy to set up." }
+          ].map((item, i) => (
+            <Card key={i} className="p-4 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+              <p>{item.desc}</p>
+            </Card>
+          ))}
+        </div>
+      )
+    },
+    {
+      title: "Design Requirements pt 2",
+      content: (
+        <div className="grid gap-4">
+          {[
+            { title: "Safety", desc: "The materials used should be safe to handle and pose no risk when exposed to heat." },
+            { title: "Cost-Effectiveness", desc: "Use inexpensive, readily available materials like pizza boxes, foil, and plastic wrap." },
+            { title: "Simplicity", desc: "The construction process must be simple enough for beginners or children to follow." },
+            { title: "Durability", desc: "The oven should withstand outdoor conditions (e.g., wind or sunlight exposure) during use." }
+          ].map((item, i) => (
+            <Card key={i} className="p-4 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+              <p>{item.desc}</p>
+            </Card>
+          ))}
+        </div>
+      )
+    },
+    {
+      title: "Constraints",
+      content: (
+        <div className="space-y-6">
+          {[
+            {
+              title: "Budget",
+              items: [
+                "The materials must be affordable and sourced easily from household items or stores.",
+                "Limited to items like pizza boxes, foil, tape, and plastic wrap."
+              ]
+            },
+            {
+              title: "Time",
+              items: [
+                "The construction should take a reasonable amount of time, preferably under an hour.",
+                "Cooking time for marshmallows is approximately 30–40 minutes after preheating."
+              ]
+            },
+            {
+              title: "Materials",
+              items: [
+                "Only lightweight, low-cost materials can be used.",
+                "Materials must withstand heat without melting or releasing harmful substances."
+              ]
+            }
+          ].map((section, i) => (
+            <Card key={i} className="p-4">
+              <h3 className="text-xl font-bold mb-2">{section.title}</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                {section.items.map((item, j) => (
+                  <li key={j}>{item}</li>
+                ))}
+              </ul>
+            </Card>
+          ))}
+        </div>
+      )
+    },
+    {
+      title: "Brainstorm",
+      content: (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="p-6">
+            <h3 className="text-2xl font-bold mb-4">Pizza Box Solar Oven</h3>
+            <ul className="space-y-4">
+              <li><strong>Description:</strong> A pizza box with aluminum foil lining and plastic wrap cover.</li>
+              <li><strong>Strengths:</strong> Simple to build and uses common materials.</li>
+              <li><strong>Ideal Use:</strong> For light cooking, such as melting chocolate</li>
+            </ul>
+          </Card>
+          <Card className="p-6">
+            <h3 className="text-2xl font-bold mb-4">Shoebox Solar Oven</h3>
+            <ul className="space-y-4">
+              <li><strong>Description:</strong> A shoebox with black construction paper lining.</li>
+              <li><strong>Strengths:</strong> Compact and easy to adjust reflectors.</li>
+              <li><strong>Ideal Use:</strong> Great for quick experiments with smaller food items.</li>
+            </ul>
+          </Card>
+        </div>
+      )
+    },
+    {
+      title: "Equipment/Materials",
+      content: (
+        <Card className="p-6">
+          <ul className="grid grid-cols-2 gap-4 list-disc pl-6">
+            {[
+              "Utility knife",
+              "Scissors",
+              "Masking tape",
+              "Black duct tape",
+              "Aluminum foil tape",
+              "School glue",
+              "Plastic wrap",
+              "Reflective insulation",
+              "Aluminum foil",
+              "Chocolate",
+              "Paper plate",
+              "Black construction paper"
+            ].map((item, i) => (
+              <li key={i} className="text-lg">{item}</li>
+            ))}
+          </ul>
+        </Card>
+      )
+    },
+    {
+      title: "Procedure",
+      content: (
+        <div className="space-y-6">
+          {[
+            {
+              title: "Prepare the Box",
+              steps: [
+                "Draw and cut the flap",
+                "Add aluminum foil for insulation",
+                "Add black construction paper",
+                "Prepare reflective flap"
+              ]
+            },
+            {
+              title: "Assembly",
+              steps: [
+                "Seal with plastic wrap",
+                "Adjust the flap",
+                "Place chocolate inside",
+                "Cook for 5 minutes"
+              ]
+            }
+          ].map((section, i) => (
+            <Card key={i} className="p-4">
+              <h3 className="text-xl font-bold mb-2">{section.title}</h3>
+              <ul className="list-decimal pl-6 space-y-2">
+                {section.steps.map((step, j) => (
+                  <li key={j}>{step}</li>
+                ))}
+              </ul>
+            </Card>
+          ))}
+        </div>
+      )
+    },
+    {
+      title: "Testing & Results",
+      content: (
+        <Card className="p-6">
+          <p className="text-lg leading-relaxed">
+            A piece of chocolate was placed on a paper plate and sealed inside the solar oven.
+            The black construction paper absorbed sunlight, and the plastic wrap helped retain
+            the heat, allowing the chocolate to melt without preheating.
+          </p>
+        </Card>
+      )
+    },
+    {
+      title: "Graph",
+      content: (
+        <div className="flex items-center justify-center h-64">
+          <p className="text-2xl font-bold text-gray-600">Photo on schoology</p>
+        </div>
+      )
+    },
+    {
+      title: "Video",
+      content: (
+        <div className="flex items-center justify-center h-64">
+          <a 
+            href="https://www.youtube.com/shorts/GrrVh_Ijv3k"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 underline text-xl"
+          >
+            Click here to watch the video
+          </a>
+        </div>
+      )
+    },
+    {
+      title: "Conclusion",
+      content: (
+        <Card className="p-6">
+          <p className="text-lg leading-relaxed">
+            Pizza box solar ovens demonstrate how simple materials can harness solar energy
+            effectively. They combine reflection, insulation, and absorption to convert sunlight
+            into heat, making them an eco-friendly and educational tool for promoting
+            renewable energy awareness.
+          </p>
+        </Card>
+      )
+    }
+  ];
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === 'ArrowRight') {
+        setCurrentSlide(prev => Math.min(prev + 1, slides.length - 1));
+      } else if (event.key === 'ArrowLeft') {
+        setCurrentSlide(prev => Math.max(prev - 1, 0));
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 p-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex justify-between items-center mb-8">
+          <NavigationButton
+            onClick={() => setCurrentSlide(prev => Math.max(prev - 1, 0))}
+            disabled={currentSlide === 0}
+            direction="left"
+          />
+          <SlideProgress current={currentSlide} total={slides.length} />
+          <NavigationButton
+            onClick={() => setCurrentSlide(prev => Math.min(prev + 1, slides.length - 1))}
+            disabled={currentSlide === slides.length - 1}
+            direction="right"
+          />
         </div>
 
-        <!-- Navigation Buttons -->
-        <div class="nav-buttons">
-            <button id="prevBtn" disabled>← Previous</button>
-            <button id="nextBtn">Next →</button>
+        <div className="bg-white rounded-lg shadow-xl p-8 min-h-[600px] transition-all duration-500">
+          <h2 className="text-3xl font-bold mb-8">{slides[currentSlide].title}</h2>
+          <div className="transition-opacity duration-300">
+            {slides[currentSlide].content}
+          </div>
         </div>
-
-        <!-- Dots -->
-        <div class="dots"></div>
+      </div>
     </div>
+  );
+};
 
-    <script>
-        // JavaScript for carousel functionality
-        const carousel = document.querySelector('.carousel');
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const dotsContainer = document.querySelector('.dots');
-        let currentSlide = 0;
-
-        // Create dots
-        slides.forEach((_, idx) => {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            if (idx === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => moveToSlide(idx));
-            dotsContainer.appendChild(dot);
-        });
-        const dots = document.querySelectorAll('.dot');
-
-        function updateButtons() {
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide === slides.length - 1;
-        }
-
-        function updateDots() {
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle('active', idx === currentSlide);
-            });
-        }
-
-        function moveToSlide(slide) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = slide;
-            slides[currentSlide].classList.add('active');
-            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-            updateButtons();
-            updateDots();
-        }
-
-        nextBtn.addEventListener('click', () => moveToSlide(currentSlide + 1));
-        prevBtn.addEventListener('click', () => moveToSlide(currentSlide - 1));
-    </script>
-</body>
-</html>
+export default SolarOvenPresentation;
