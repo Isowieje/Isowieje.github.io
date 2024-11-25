@@ -9,6 +9,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            background-color: #f4f4f4;
         }
 
         .slideshow-container {
@@ -23,22 +24,50 @@
             min-width: 100%;
             height: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #f4f4f4;
-            transition: transform 0.8s ease-in-out;
-        }
-
-        .slide-content {
-            max-width: 80%;
             text-align: center;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: transform 0.8s ease-in-out;
+            background-size: cover;
+            background-position: center;
         }
 
-        .slide-content img {
-            max-width: 100%;
-            max-height: 70vh;
+        /* Slide-specific background colors and gradients */
+        #slide-1 { background: linear-gradient(to bottom, #0077b6, #0096c7); }
+        #slide-2 { background: linear-gradient(to bottom, #023e8a, #0077b6); }
+        #slide-3 { background: linear-gradient(to bottom, #0096c7, #00b4d8); }
+        #slide-4 { background: linear-gradient(to bottom, #0077b6, #023e8a); }
+        #slide-5 { background: linear-gradient(to bottom, #0096c7, #0077b6); }
+        #slide-6 { background: linear-gradient(to bottom, #023e8a, #0077b6); }
+        #slide-7 { background: linear-gradient(to bottom, #00b4d8, #0077b6); }
+
+        .slide h1, .slide h2 {
+            margin: 10px 0;
+        }
+
+        .slide p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .slide img, .slide video {
+            max-width: 70%;
+            max-height: 50vh;
             margin: 20px 0;
             border: 2px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide iframe {
+            width: 70%;
+            height: 40vh;
+            margin: 20px 0;
+            border: none;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -62,51 +91,80 @@
         }
 
         .progress-dot.active {
-            background-color: #555;
+            background-color: #fff;
         }
     </style>
 </head>
 <body>
     <div class="slideshow-container" id="slideshow">
-        <!-- Each slide's content -->
+        <!-- Slide 1: Title Slide -->
         <div class="slide" id="slide-1">
             <div class="slide-content">
                 <h1>STEM Project 2025</h1>
                 <p>By Bola Wahba</p>
-                <img src="stem-project-cover.jpg" alt="STEM Project Cover">
+                <img src="project-cover.jpg" alt="Project Cover">
             </div>
         </div>
+
+        <!-- Slide 2: Problem Description -->
         <div class="slide" id="slide-2">
             <div class="slide-content">
-                <h2>What problem needs to be solved?</h2>
-                <p>Access to sustainable and cost-effective cooking solutions...</p>
-                <img src="solar-cooking-problem.jpg" alt="Problem Illustration">
+                <h2>What Problem Needs to Be Solved?</h2>
+                <p>Access to sustainable and cost-effective cooking solutions is limited...</p>
+                <iframe src="https://www.youtube.com/embed/GrrVh_Ijv3k" title="YouTube Video"></iframe>
             </div>
         </div>
+
+        <!-- Slide 3: Design Requirements -->
         <div class="slide" id="slide-3">
             <div class="slide-content">
-                <h2>Design Requirements (Part 1)</h2>
+                <h2>Design Requirements</h2>
                 <ul>
                     <li>Efficient Heat Retention</li>
                     <li>Light Reflection</li>
                     <li>Insulation</li>
                     <li>Compact and Lightweight</li>
                 </ul>
-                <img src="design-requirements.jpg" alt="Design Requirements">
+                <img src="design-requirements-graph.jpg" alt="Graph Illustration">
             </div>
         </div>
+
+        <!-- Slide 4: Constraints -->
         <div class="slide" id="slide-4">
             <div class="slide-content">
                 <h2>Constraints</h2>
-                <p>Materials, size, and weather dependence are critical factors.</p>
-                <img src="constraints.jpg" alt="Constraints">
+                <p>Budget, materials, weather dependence, and heat limitation are key factors...</p>
+                <img src="constraints-chart.jpg" alt="Constraints Chart">
             </div>
         </div>
+
+        <!-- Slide 5: Brainstorm -->
         <div class="slide" id="slide-5">
+            <div class="slide-content">
+                <h2>Brainstorm</h2>
+                <p>Pizza Box Solar Oven vs Shoebox Solar Oven</p>
+                <ul>
+                    <li>Pizza box chosen for simplicity and availability.</li>
+                </ul>
+                <img src="brainstorm-illustration.jpg" alt="Brainstorm Illustration">
+            </div>
+        </div>
+
+        <!-- Slide 6: Prototype -->
+        <div class="slide" id="slide-6">
+            <div class="slide-content">
+                <h2>Prototype</h2>
+                <p>Testing the pizza box solar oven with chocolate...</p>
+                <video src="prototype-demo.mp4" controls></video>
+            </div>
+        </div>
+
+        <!-- Slide 7: Conclusion -->
+        <div class="slide" id="slide-7">
             <div class="slide-content">
                 <h2>Conclusion</h2>
                 <p>Pizza box solar ovens showcase the power of renewable energy.</p>
-                <img src="solar-oven.jpg" alt="Solar Oven Image">
+                <img src="conclusion-illustration.jpg" alt="Solar Oven Illustration">
             </div>
         </div>
     </div>
@@ -162,4 +220,3 @@
     </script>
 </body>
 </html>
-
