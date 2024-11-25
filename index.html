@@ -4,125 +4,216 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STEM Project 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* General styling */
+        /* General Styling */
         body {
+            font-family: 'Roboto', sans-serif;
             margin: 0;
-            font-family: 'Arial', sans-serif;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
             overflow: hidden;
         }
-
-        .slider-container {
+        .carousel {
             display: flex;
             transition: transform 0.8s ease-in-out;
-            height: 100vh;
-            width: 100%;
         }
-
         .slide {
-            flex: 0 0 100%;
+            min-width: 100%;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .nav-buttons {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            color: #fff;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+        }
+        .nav-buttons button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-buttons button:hover {
+            background: #0056b3;
+        }
+        .nav-buttons button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        /* Navigation Dots */
+        .dots {
             text-align: center;
-        }
-
-        /* Slide background colors */
-        .slide:nth-child(1) { background: #2980b9; }
-        .slide:nth-child(2) { background: #27ae60; }
-        .slide:nth-child(3) { background: #8e44ad; }
-        .slide:nth-child(4) { background: #c0392b; }
-        .slide:nth-child(5) { background: #f39c12; }
-        .slide:nth-child(6) { background: #34495e; }
-
-        h1, h2, h3 {
-            margin: 0 0 20px;
-        }
-
-        p {
-            max-width: 80%;
-            font-size: 18px;
-        }
-
-        .slide img {
-            max-width: 80%;
-            height: auto;
             margin-top: 20px;
+        }
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 5px;
+            background-color: #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .dot.active {
+            background-color: #007BFF;
         }
     </style>
 </head>
 <body>
-    <div class="slider-container" id="slider">
-        <!-- Slide 1 -->
-        <div class="slide">
-            <h1>STEM Project 2025</h1>
-            <p>Presented by: Bola Wahba</p>
+    <div class="container">
+        <!-- Carousel -->
+        <div class="carousel">
+            <!-- Slide 1 -->
+            <div class="slide active">
+                <h1>STEM Project 2025</h1>
+                <p>By: Bola Wahba</p>
+                <p>Date: 11/25/24</p>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide">
+                <h2>What Problem Needs to Be Solved?</h2>
+                <p>
+                    Access to sustainable and cost-effective cooking solutions is limited in areas where 
+                    conventional energy sources are scarce or expensive. Additionally, traditional cooking 
+                    methods often rely on fuels like wood or gas, contributing to environmental degradation 
+                    and air pollution. A solar oven addresses these challenges by harnessing sunlight as a 
+                    clean, renewable energy source for cooking.
+                </p>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+                <h2>Design Requirements (Part 1)</h2>
+                <ul>
+                    <li>Efficient Heat Retention: Trap and maintain heat effectively to cook food.</li>
+                    <li>Light Reflection: Reflective surfaces must direct sunlight into the box.</li>
+                    <li>Insulation: Proper insulation is needed to minimize heat loss.</li>
+                    <li>Compact and Lightweight: The design must be portable and easy to set up.</li>
+                </ul>
+            </div>
+            <!-- Slide 4 -->
+            <div class="slide">
+                <h2>Design Requirements (Part 2)</h2>
+                <ul>
+                    <li>Safety: Materials used should be safe to handle.</li>
+                    <li>Cost-Effectiveness: Use inexpensive materials like pizza boxes and foil.</li>
+                    <li>Simplicity: Construction should be simple for beginners.</li>
+                    <li>Durability: Oven should withstand outdoor conditions.</li>
+                </ul>
+            </div>
+            <!-- Slide 5 -->
+            <div class="slide">
+                <h2>Constraints (Part 1)</h2>
+                <ul>
+                    <li>Budget: Use affordable, household materials.</li>
+                    <li>Time: Construction should take less than an hour.</li>
+                    <li>Materials: Use lightweight, low-cost, and heat-safe items.</li>
+                    <li>Weather Dependence: Rely entirely on sunlight.</li>
+                </ul>
+            </div>
+            <!-- Slide 6 -->
+            <div class="slide">
+                <h2>Constraints (Part 2)</h2>
+                <ul>
+                    <li>Size: Oven must balance size for food and heat retention.</li>
+                    <li>Heat Limitation: Moderate temperatures for light cooking only.</li>
+                    <li>User Skill Level: Simple enough for children with adult supervision.</li>
+                </ul>
+            </div>
+            <!-- Slide 7 -->
+            <div class="slide">
+                <h2>Brainstorm: Pizza Box Solar Oven</h2>
+                <p>
+                    Description: A pizza box with aluminum foil lining and black construction paper 
+                    absorbs heat, with plastic wrap trapping it inside.
+                </p>
+            </div>
+            <!-- Slide 13 -->
+            <div class="slide">
+                <h2>Photo Placeholder</h2>
+                <p>Photo to be added later (different spot).</p>
+            </div>
+            <!-- Slide 16 -->
+            <div class="slide">
+                <h2>Photo Placeholder</h2>
+                <p>Photo to be added later (different spot).</p>
+            </div>
         </div>
-        <!-- Slide 2 -->
-        <div class="slide">
-            <h2>What Problem Needs to Be Solved?</h2>
-            <p>
-                Access to sustainable cooking solutions is limited in areas without conventional energy.<br>
-                A solar oven provides clean, renewable cooking methods for communities in need.
-            </p>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button id="prevBtn" disabled>← Previous</button>
+            <button id="nextBtn">Next →</button>
         </div>
-        <!-- Slide 3 -->
-        <div class="slide">
-            <h2>Design Requirements</h2>
-            <p>
-                For a functional solar oven: efficient heat retention, insulation, light reflection, and portability are essential.<br>
-                These ensure usability and performance under different conditions.
-            </p>
-        </div>
-        <!-- Slide 4 -->
-        <div class="slide">
-            <h2>Results of the Experiment</h2>
-            <p>
-                The solar oven showed a steady increase in temperature during the trial. See the graph below for detailed performance:
-            </p>
-            <img src="image1.png" alt="Graph: Solar Oven Performance">
-        </div>
-        <!-- Slide 5 -->
-        <div class="slide">
-            <h2>Improved Prototype Performance</h2>
-            <p>
-                The improved solar oven retained heat more effectively, with a higher temperature curve. See the graph below:
-            </p>
-            <img src="image2.png" alt="Graph: Improved Prototype Performance">
-        </div>
-        <!-- Slide 6 -->
-        <div class="slide">
-            <h2>Conclusion</h2>
-            <p>
-                Solar ovens provide a sustainable and renewable way to cook food, reducing reliance on conventional fuels. The prototype demonstrated great potential for practical applications.
-            </p>
-        </div>
+
+        <!-- Dots -->
+        <div class="dots"></div>
     </div>
 
     <script>
-        let currentSlide = 0; // Track current slide
-        const slider = document.getElementById("slider");
+        // JavaScript for carousel functionality
+        const carousel = document.querySelector('.carousel');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.querySelector('.dots');
+        let currentSlide = 0;
 
-        // Function to show a specific slide
-        function showSlide(index) {
-            const totalSlides = document.querySelectorAll(".slide").length;
+        // Create dots
+        slides.forEach((_, idx) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (idx === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => moveToSlide(idx));
+            dotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll('.dot');
 
-            // Loop back if out of bounds
-            if (index < 0) currentSlide = totalSlides - 1;
-            else if (index >= totalSlides) currentSlide = 0;
-            else currentSlide = index;
-
-            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        function updateButtons() {
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
         }
 
-        // Listen for keyboard events
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "ArrowRight") showSlide(currentSlide + 1);
-            if (e.key === "ArrowLeft") showSlide(currentSlide - 1);
-        });
+        function updateDots() {
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentSlide);
+            });
+        }
+
+        function moveToSlide(slide) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = slide;
+            slides[currentSlide].classList.add('active');
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateButtons();
+            updateDots();
+        }
+
+        nextBtn.addEventListener('click', () => moveToSlide(currentSlide + 1));
+        prevBtn.addEventListener('click', () => moveToSlide(currentSlide - 1));
     </script>
 </body>
 </html>
