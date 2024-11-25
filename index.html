@@ -18,7 +18,6 @@
             width: 100vw;
             height: 100vh;
             overflow: hidden;
-            scroll-snap-type: x mandatory; /* Enable smooth horizontal scrolling */
         }
 
         .slide {
@@ -51,6 +50,10 @@
             padding: 0 1em;
         }
 
+        iframe {
+            border: none;
+        }
+
         /* Navigation Buttons */
         .nav-btn {
             position: fixed;
@@ -81,10 +84,12 @@
 <body>
     <!-- Slides -->
     <div id="slides">
+        <!-- Slide 1: Title -->
         <div class="slide">
             <h1>STEM Project 2025</h1>
             <h2>Bola Wahba</h2>
         </div>
+        <!-- Slide 2: Problem Statement -->
         <div class="slide">
             <h1>What Problem Needs to Be Solved?</h1>
             <p>
@@ -97,6 +102,7 @@
                 for cooking.
             </p>
         </div>
+        <!-- Slide 3: Design Requirements (Part 1) -->
         <div class="slide">
             <h1>Design Requirements (Part 1)</h1>
             <p>
@@ -106,6 +112,7 @@
                 - Compact and Lightweight: Ensure portability and ease of setup.
             </p>
         </div>
+        <!-- Slide 4: Design Requirements (Part 2) -->
         <div class="slide">
             <h1>Design Requirements (Part 2)</h1>
             <p>
@@ -115,6 +122,7 @@
                 - Durability: Ensure the oven can withstand outdoor conditions like wind and sunlight.
             </p>
         </div>
+        <!-- Slide 5: Constraints (Part 1) -->
         <div class="slide">
             <h1>Constraints (Part 1)</h1>
             <p>
@@ -124,6 +132,7 @@
                 - Weather Dependence: Relies entirely on sunlight, making it ineffective in cloudy or rainy weather.
             </p>
         </div>
+        <!-- Slide 6: Constraints (Part 2) -->
         <div class="slide">
             <h1>Constraints (Part 2)</h1>
             <p>
@@ -132,6 +141,7 @@
                 - User Skill Level: Simple enough for children working with adult supervision.
             </p>
         </div>
+        <!-- Slide 7: Brainstorm -->
         <div class="slide">
             <h1>Brainstorm</h1>
             <p>
@@ -142,6 +152,7 @@
                 - Ideal Use: Light cooking like melting chocolate.
             </p>
         </div>
+        <!-- Slide 8: Discussion -->
         <div class="slide">
             <h1>Discussion</h1>
             <p>
@@ -149,6 +160,7 @@
                 and pizza boxes are often easy to get for free by simply asking.
             </p>
         </div>
+        <!-- Slide 9: Equipment -->
         <div class="slide">
             <h1>Equipment/Materials</h1>
             <p>
@@ -158,6 +170,7 @@
                 - Black construction paper
             </p>
         </div>
+        <!-- Slide 10: Procedure Part 1 -->
         <div class="slide">
             <h1>Procedure (Part 1)</h1>
             <p>
@@ -167,6 +180,7 @@
                 4. Prepare a reflective flap with insulation.
             </p>
         </div>
+        <!-- Slide 11: Procedure Part 2 -->
         <div class="slide">
             <h1>Procedure (Part 2)</h1>
             <p>
@@ -176,6 +190,7 @@
                 8. Cook the chocolate and enjoy!
             </p>
         </div>
+        <!-- Slide 12: Testing -->
         <div class="slide">
             <h1>Testing First Prototype</h1>
             <p>
@@ -183,9 +198,11 @@
                 sunlight, and plastic wrap retained heat, allowing the chocolate to melt even without preheating.
             </p>
         </div>
+        <!-- Slide 13: Check Schoology -->
         <div class="slide">
             <h1>Check Schoology</h1>
         </div>
+        <!-- Slide 14: Redesign -->
         <div class="slide">
             <h1>Redesign</h1>
             <p>
@@ -193,6 +210,7 @@
                 the flap open so it wouldn’t fly away.
             </p>
         </div>
+        <!-- Slide 15: Conclusion -->
         <div class="slide">
             <h1>Conclusion</h1>
             <p>
@@ -200,9 +218,11 @@
                 inexpensive, eco-friendly, and accessible for educational purposes, promoting awareness of renewable energy.
             </p>
         </div>
+        <!-- Slide 16: Check Schoology -->
         <div class="slide">
             <h1>Check Schoology</h1>
         </div>
+        <!-- Slide 17: Graph or Chart -->
         <div class="slide">
             <h1>Graph or Chart</h1>
             <p>
@@ -216,34 +236,33 @@
     <button class="nav-btn right-btn" id="nextBtn">&#9654;</button>
 
     <script>
-        // JavaScript for navigation
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
+        const slides = document.query
+const slides = document.querySelectorAll('.slide');
+const container = document.getElementById('slides');
+let currentSlide = 0;
 
-        const showSlide = (index) => {
-            slides[currentSlide].scrollIntoView({ behavior: 'smooth', inline: 'start' });
-        };
+const showSlide = (index) => {
+    const offset = -index * window.innerWidth;
+    container.style.transform = `translateX(${offset}px)`;
+};
 
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            if (currentSlide < slides.length - 1) currentSlide++;
-            showSlide(currentSlide);
-        });
+document.getElementById('nextBtn').addEventListener('click', () => {
+    if (currentSlide < slides.length - 1) currentSlide++;
+    showSlide(currentSlide);
+});
 
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            if (currentSlide > 0) currentSlide--;
-            showSlide(currentSlide);
-        });
+document.getElementById('prevBtn').addEventListener('click', () => {
+    if (currentSlide > 0) currentSlide--;
+    showSlide(currentSlide);
+});
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === ‘ArrowRight' && currentSlide < slides.length - 1) {
-                currentSlide++;
-                showSlide(currentSlide);
-            } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
-                currentSlide--;
-                showSlide(currentSlide);
-            }
-        });
-    </script>
-</body>
-</html>
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+        currentSlide++;
+        showSlide(currentSlide);
+    } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+        currentSlide--;
+        showSlide(currentSlide);
+    }
+});
