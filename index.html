@@ -235,34 +235,4 @@
     <button class="nav-btn left-btn" id="prevBtn">&#9664;</button>
     <button class="nav-btn right-btn" id="nextBtn">&#9654;</button>
 
-    <script>
-        const slides = document.query
-const slides = document.querySelectorAll('.slide');
-const container = document.getElementById('slides');
-let currentSlide = 0;
-
-const showSlide = (index) => {
-    const offset = -index * window.innerWidth;
-    container.style.transform = `translateX(${offset}px)`;
-};
-
-document.getElementById('nextBtn').addEventListener('click', () => {
-    if (currentSlide < slides.length - 1) currentSlide++;
-    showSlide(currentSlide);
-});
-
-document.getElementById('prevBtn').addEventListener('click', () => {
-    if (currentSlide > 0) currentSlide--;
-    showSlide(currentSlide);
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
-        currentSlide++;
-        showSlide(currentSlide);
-    } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
-        currentSlide--;
-        showSlide(currentSlide);
-    }
-});
+    <
