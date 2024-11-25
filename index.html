@@ -1,238 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar Oven Project</title>
-    <style>
-        /* General Styles */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STEM Project 2025 Presentation</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        #slides {
-            display: flex;
-            flex-direction: row; /* Slides move horizontally */
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #121212;
+      color: #ffffff;
+      overflow: hidden;
+    }
 
-        .slide {
-            flex: 0 0 100%; /* Each slide takes full width */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            scroll-snap-align: start;
-            text-align: center;
-        }
+    .slides {
+      display: flex;
+      flex-wrap: nowrap;
+      height: 100vh;
+      transition: transform 0.5s ease-in-out;
+    }
 
-        /* Color Scheme */
-        .slide:nth-child(odd) {
-            background-color: #e8f5e9; /* Light green */
-            color: #1b5e20; /* Dark green */
-        }
+    .slide {
+      min-width: 100vw;
+      height: 100vh;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #1e1e1e;
+      border-right: 1px solid #333;
+    }
 
-        .slide:nth-child(even) {
-            background-color: #e3f2fd; /* Light blue */
-            color: #0d47a1; /* Dark blue */
-        }
+    .slide h1, .slide h2, .slide h3 {
+      color: #00d4ff;
+    }
 
-        h1, h2 {
-            margin: 0.5em;
-        }
+    .slide p, .slide ul, .slide ol {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
 
-        p {
-            max-width: 800px;
-            padding: 0 1em;
-        }
+    .slide ul {
+      list-style: none;
+    }
 
-        iframe {
-            border: none;
-        }
+    .slide ul li::before {
+      content: "• ";
+      color: #00d4ff;
+      font-weight: bold;
+    }
 
-        /* Navigation Buttons */
-        .nav-btn {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 100;
-        }
+    .slide img {
+      margin: 1.5rem auto;
+      max-width: 90%;
+      height: auto;
+    }
 
-        .left-btn {
-            left: 10px;
-        }
+    .navigation {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
 
-        .right-btn {
-            right: 10px;
-        }
-    </style>
+    .navigation button {
+      padding: 0.5rem 1rem;
+      background-color: #00d4ff;
+      color: #121212;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .navigation button:hover {
+      background-color: #0088cc;
+    }
+
+    .instructions {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
-    <!-- Slides -->
-    <div id="slides">
-        <!-- Slide 1: Title -->
-        <div class="slide">
-            <h1>STEM Project 2025</h1>
-            <h2>Bola Wahba</h2>
-        </div>
-        <!-- Slide 2: Problem Statement -->
-        <div class="slide">
-            <h1>What Problem Needs to Be Solved?</h1>
-            <p>
-                Access to sustainable and cost-effective cooking solutions is limited in areas where conventional energy 
-                sources are scarce or expensive. Traditional cooking methods often rely on fuels like wood or gas, 
-                contributing to environmental degradation and air pollution.
-            </p>
-            <p>
-                A solar oven addresses these challenges by harnessing sunlight as a clean, renewable energy source 
-                for cooking.
-            </p>
-        </div>
-        <!-- Slide 3: Design Requirements (Part 1) -->
-        <div class="slide">
-            <h1>Design Requirements (Part 1)</h1>
-            <p>
-                - Efficient Heat Retention: Trap and maintain heat effectively to cook food using only sunlight.<br>
-                - Light Reflection: Reflective surfaces must direct sunlight into the box to maximize heat.<br>
-                - Insulation: Minimize heat loss and retain warmth inside the box.<br>
-                - Compact and Lightweight: Ensure portability and ease of setup.
-            </p>
-        </div>
-        <!-- Slide 4: Design Requirements (Part 2) -->
-        <div class="slide">
-            <h1>Design Requirements (Part 2)</h1>
-            <p>
-                - Safety: Use materials safe to handle and heat-resistant.<br>
-                - Cost-Effectiveness: Use inexpensive, readily available materials like pizza boxes, foil, and plastic wrap.<br>
-                - Simplicity: Keep the construction process simple enough for beginners or children.<br>
-                - Durability: Ensure the oven can withstand outdoor conditions like wind and sunlight.
-            </p>
-        </div>
-        <!-- Slide 5: Constraints (Part 1) -->
-        <div class="slide">
-            <h1>Constraints (Part 1)</h1>
-            <p>
-                - Budget: Use affordable materials sourced from household items or stores.<br>
-                - Time: Construction should take under an hour, with a cooking time of 30–40 minutes.<br>
-                - Materials: Use lightweight, low-cost materials that withstand heat without melting or releasing harmful substances.<br>
-                - Weather Dependence: Relies entirely on sunlight, making it ineffective in cloudy or rainy weather.
-            </p>
-        </div>
-        <!-- Slide 6: Constraints (Part 2) -->
-        <div class="slide">
-            <h1>Constraints (Part 2)</h1>
-            <p>
-                - Size: Must be large enough for food but small enough to maintain heat efficiently.<br>
-                - Heat Limitation: Limited to moderate temperatures, suitable for lightweight items like chocolate.<br>
-                - User Skill Level: Simple enough for children working with adult supervision.
-            </p>
-        </div>
-        <!-- Slide 7: Brainstorm -->
-        <div class="slide">
-            <h1>Brainstorm</h1>
-            <p>
-                Pizza Box Solar Oven:<br>
-                - Description: A pizza box with aluminum foil lining, black construction paper for heat absorption, 
-                  and plastic wrap cover to trap heat. Reflective insulation focuses sunlight into the box.<br>
-                - Strengths: Simple to build using common materials.<br>
-                - Ideal Use: Light cooking like melting chocolate.
-            </p>
-        </div>
-        <!-- Slide 8: Discussion -->
-        <div class="slide">
-            <h1>Discussion</h1>
-            <p>
-                I chose the pizza box solar oven design over the shoebox design because I didn’t have a shoebox available, 
-                and pizza boxes are often easy to get for free by simply asking.
-            </p>
-        </div>
-        <!-- Slide 9: Equipment -->
-        <div class="slide">
-            <h1>Equipment/Materials</h1>
-            <p>
-                - Utility knife, scissors, masking tape, black duct tape<br>
-                - Aluminum foil tape, school glue, plastic wrap<br>
-                - Reflective insulation, aluminum foil, chocolate, paper plate<br>
-                - Black construction paper
-            </p>
-        </div>
-        <!-- Slide 10: Procedure Part 1 -->
-        <div class="slide">
-            <h1>Procedure (Part 1)</h1>
-            <p>
-                1. Prepare the pizza box by cutting and folding a flap.<br>
-                2. Add aluminum foil for insulation.<br>
-                3. Add black construction paper for heat absorption.<br>
-                4. Prepare a reflective flap with insulation.
-            </p>
-        </div>
-        <!-- Slide 11: Procedure Part 2 -->
-        <div class="slide">
-            <h1>Procedure (Part 2)</h1>
-            <p>
-                5. Seal the box with plastic wrap.<br>
-                6. Adjust the flap using a straw or stick to reflect sunlight.<br>
-                7. Place chocolate inside and seal the box.<br>
-                8. Cook the chocolate and enjoy!
-            </p>
-        </div>
-        <!-- Slide 12: Testing -->
-        <div class="slide">
-            <h1>Testing First Prototype</h1>
-            <p>
-                Chocolate was placed on a plate and sealed in the solar oven. The black construction paper absorbed 
-                sunlight, and plastic wrap retained heat, allowing the chocolate to melt even without preheating.
-            </p>
-        </div>
-        <!-- Slide 13: Check Schoology -->
-        <div class="slide">
-            <h1>Check Schoology</h1>
-        </div>
-        <!-- Slide 14: Redesign -->
-        <div class="slide">
-            <h1>Redesign</h1>
-            <p>
-                I improved the design by adding more aluminum foil for better insulation. I also added a straw to hold 
-                the flap open so it wouldn’t fly away.
-            </p>
-        </div>
-        <!-- Slide 15: Conclusion -->
-        <div class="slide">
-            <h1>Conclusion</h1>
-            <p>
-                Pizza box solar ovens demonstrate how simple materials can harness solar energy effectively. They are 
-                inexpensive, eco-friendly, and accessible for educational purposes, promoting awareness of renewable energy.
-            </p>
-        </div>
-        <!-- Slide 16: Check Schoology -->
-        <div class="slide">
-            <h1>Check Schoology</h1>
-        </div>
-        <!-- Slide 17: Graph or Chart -->
-        <div class="slide">
-            <h1>Graph or Chart</h1>
-            <p>
-                Include your graph or chart representation as needed here. (Placeholder for your visuals.)
-            </p>
-        </div>
+  <div class="instructions">Use Left ← and Right → arrow keys to navigate</div>
+
+  <div class="slides">
+    <!-- Slide 1 -->
+    <div class="slide">
+      <h1>STEM Project 2025</h1>
+      <h2>Bola Wahba - 304</h2>
+      <p>Date: 11/25/24</p>
     </div>
 
-    <!-- Navigation Buttons -->
-    <button class="nav-btn left-btn" id="prevBtn">&#9664;</button>
-    <button class="nav-btn right-btn" id="nextBtn">&#9654;</button>
+    <!-- Slide 2 -->
+    <div class="slide">
+      <h2>What Problem Needs to Be Solved?</h2>
+      <p>
+        Access to sustainable and cost-effective cooking solutions is limited in areas where
+        conventional energy sources are scarce or expensive. Additionally, traditional cooking
+        methods often rely on fuels like wood or gas, contributing to environmental degradation
+        and air pollution.
+      </p>
+      <p>A solar oven addresses these challenges by harnessing sunlight as a clean, renewable energy source for cooking.</p>
+    </div>
 
-    <
+    <!-- Slide 3 -->
+    <div class="slide">
+      <h2>Design Requirements (Part 1)</h2>
+      <ul>
+        <li>Efficient Heat Retention: The oven must trap and maintain heat effectively to cook food using only sunlight.</li>
+        <li>Light Reflection: Reflective surfaces must direct sunlight into the box to maximize heat.</li>
+        <li>Insulation: Proper insulation is needed to minimize heat loss and retain warmth inside the box.</li>
+        <li>Compact and Lightweight: The design must be portable and easy to set up.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <h2>Design Requirements (Part 2)</h2>
+      <ul>
+        <li>Safety: The materials used should be safe to handle and pose no risk when exposed to heat.</li>
+        <li>Cost-Effectiveness: Use inexpensive, readily available materials like pizza boxes, foil, and plastic wrap.</li>
+        <li>Simplicity: The construction process must be simple enough for beginners or children to follow.</li>
+        <li>Durability: The oven should withstand outdoor conditions during use.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+      <h2>Constraints (Part 1)</h2>
+      <ul>
+        <li>Budget: Materials must be affordable and sourced easily from household items or stores.</li>
+        <li>Time: Construction should take under an hour; cooking time for marshmallows is 30–40 minutes after preheating.</li>
+        <li>Materials: Only lightweight, low-cost materials like cardboard, aluminum foil, plastic wrap, and duct tape can be used.</li>
+        <li>Weather Dependence: Relies entirely on sunlight, making it ineffective in cloudy or rainy weather.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+      <h2>Constraints (Part 2)</h2>
+      <ul>
+        <li>Size: The oven must be large enough to accommodate food items but small enough to maintain heat efficiently.</li>
+        <li>Heat Limitation: The oven will only reach moderate temperatures, restricting it to cooking lightweight items.</li>
+        <li>User Skill Level: The design must be simple enough for young participants with adult supervision.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide">
+      <h2>Brainstorm</h2>
+      <h3>Pizza Box Solar Oven</h3>
+      <p>
+        A pizza box with aluminum foil lining, black construction paper on the base for heat absorption, and a plastic wrap cover to trap heat.
+      </p>
+      <p>Strengths: Simple to build and uses common materials.</p>
+      <p>Ideal Use: For light cooking, such as melting chocolate.</p>
+    </div>
+
+    <!-- Slide 8 -->
+    <div class="slide">
+      <h2>Brainstorm</h2>
+      <h3>Shoebox Solar Oven</h3>
+      <p>
+        A shoebox with black construction paper lining, aluminum foil reflectors, and plastic wrap sealing the top opening to trap heat.
+      </p>
+      <p>Strengths: Compact and easy to adjust reflectors.</p>
+      <p>Ideal Use: Great for quick experiments with smaller food items.</p>
+    </div>
+
+    <!-- Slide 9 -->
+    <div class="slide">
+      <h2>Discussion: Why I Chose This Design</h2>
+      <p>
+        I chose the pizza box solar oven design over the shoebox design because I didn’t have a shoebox available, and pizza boxes are often easy to get for free if you simply ask.
+      </p>
+    </div>
+
+    <!-- Slide 10 -->
+    <div class="slide">
+      <h2>Equipment/Materials</h2>
+      <ul>
+        <li>Utility knife</li>
+        <li>Scissors</li>
+        <li>Masking tape</li>
+        <li>Black duct tape</li>
+        <li>Aluminum foil tape</li>
+        <li>School glue</li>
+        <li>Plastic wrap</li>
+        <li>Reflective insulation</li>
+        <li>Aluminum foil</li>
+        <li>Chocolate</li>
+        <li>Paper plate</li>
+        <li>Black construction paper</li>
+      </ul>
+    </div>
+
+    <!-- Slide 11 -->
+    <div class="slide">
+      <h2>Procedure (Part 1)</h2>
+      <p>1. Prepare the Pizza Box: Draw lines to create a flap and cut.</p>
+      <p>2. Add Aluminum Foil for Insulation: Attach foil to the bottom of the pizza box.</p>
+      <p>3. Add a Heat-Absorbing Surface: Glue black construction paper on top of the foil.</p>
+      <p>4. Prepare the Reflective Flap: Attach reflective insulation to the flap.</p>
+    </div>
+
+    <!-- Slide 12 -->
+    <div class="slide">
+      <h2>Procedure (Part 2)</h2>
+      <p>5. Seal the Box with Plastic Wrap: Tape plastic wrap over the hole to trap heat.</p>
+      <p>6. Adjust the Flap: Use a straw or stick to hold the flap open at an angle to reflect sunlight.</p>
+      <p>7. Cook the Chocolate: Place chocolate on a paper plate and seal the box.</p>
+    </div>
+
+    <!-- Slide 13 -->
+    <div class="slide">
+      <h1>In Files</h1>
+    </div>
+
+    <!-- Slide 14 -->
+    <div class="slide">
+      <h2>Testing First Prototype</h2>
+      <p>
+        A piece of chocolate was placed on a paper plate and sealed inside the solar oven with plastic wrap to trap heat. The black construction paper absorbed sunlight, and the plastic wrap helped retain the heat, melting the chocolate despite not preheating the oven.
+      </p>
+    </div>
+
+    <!-- Slide 15 -->
+    <div class="slide">
+      <h2>Redesign</h2>
+      <p>
+        I improved my design by adding more aluminum foil than necessary. I also added a straw to hold up the flap so it doesn't fly away.
+      </p>
+    </div>
+
+    <!-- Slide 16 -->
+    <div class="slide">
+      <h1>In Files</h1>
+    </div>
+
+    <!-- Slide 17 -->
+    <div class="slide">
+      <h2>Conclusion</h2>
+      <p>
+        Pizza box solar ovens are an excellent example of how simple materials can be used to harness solar energy effectively.
+      </p>
+      <p>
+        They are inexpensive, eco-friendly, and easy to build, making them accessible for educational purposes and promoting awareness of renewable energy.
+      </p>
+    </div>
+  </div>
+
+  <div class="navigation">
+    <button id="prev">← Previous</button>
+    <button id="next">Next →</button>
+  </div>
+
+  <script>
+    const slides = document.querySelector('.slides');
+    const slideCount = document.querySelectorAll('.slide').length;
+    let currentSlide = 0;
+
+    const updateSlidePosition = () => {
+      slides.style.transform = `translateX(-${currentSlide * 100}vw)`;
+    };
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && currentSlide < slideCount - 1) {
+        currentSlide++;
+        updateSlidePosition();
+      } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+        currentSlide--;
+        updateSlidePosition();
+      }
+    });
+
+    document.getElementById('next').addEventListener('click', () => {
+      if (currentSlide < slideCount - 1) {
+        currentSlide++;
+        updateSlidePosition();
+      }
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlidePosition();
+      }
+    });
+  </script>
+</body>
+</html>
