@@ -1,222 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEM Project 2025</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-            background-color: #f4f4f4;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Slideshow</title>
+  <style>
+    /* Base reset for consistent layout */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
 
-        .slideshow-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            overflow: hidden;
-        }
+    /* Slideshow container */
+    .slideshow {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .slide {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            padding: 20px;
-            box-sizing: border-box;
-            transition: transform 0.8s ease-in-out;
-            background-size: cover;
-            background-position: center;
-        }
+    /* Individual slides */
+    .slide {
+      flex: 0 0 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: transform 0.8s ease-in-out;
+    }
 
-        /* Slide-specific background colors and gradients */
-        #slide-1 { background: linear-gradient(to bottom, #0077b6, #0096c7); }
-        #slide-2 { background: linear-gradient(to bottom, #023e8a, #0077b6); }
-        #slide-3 { background: linear-gradient(to bottom, #0096c7, #00b4d8); }
-        #slide-4 { background: linear-gradient(to bottom, #0077b6, #023e8a); }
-        #slide-5 { background: linear-gradient(to bottom, #0096c7, #0077b6); }
-        #slide-6 { background: linear-gradient(to bottom, #023e8a, #0077b6); }
-        #slide-7 { background: linear-gradient(to bottom, #00b4d8, #0077b6); }
+    /* Colors and styling for slides */
+    .slide1 { background-color: #f4f4f4; color: #222; }
+    .slide2 { background-color: #dfe7fd; color: #000; }
+    .slide3 { background-color: #f9ebea; color: #333; }
+    .slide4 { background-color: #f7f7f7; color: #000; }
 
-        .slide h1, .slide h2 {
-            margin: 10px 0;
-        }
+    /* Images inside slides */
+    .slide img {
+      max-width: 90%;
+      max-height: 80%;
+      margin: 10px auto;
+    }
 
-        .slide p {
-            font-size: 18px;
-            margin: 10px 0;
-        }
+    /* Text for slides */
+    h1 { font-size: 2.5rem; margin-bottom: 20px; }
+    p { font-size: 1.5rem; }
 
-        .slide img, .slide video {
-            max-width: 70%;
-            max-height: 50vh;
-            margin: 20px 0;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .slide iframe {
-            width: 70%;
-            height: 40vh;
-            margin: 20px 0;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Progress indicator styles */
-        .progress-container {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-
-        .progress-dot {
-            width: 12px;
-            height: 12px;
-            background-color: #ddd;
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
-        }
-
-        .progress-dot.active {
-            background-color: #fff;
-        }
-    </style>
+    /* Navigation hint */
+    .navigation-hint {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-    <div class="slideshow-container" id="slideshow">
-        <!-- Slide 1: Title Slide -->
-        <div class="slide" id="slide-1">
-            <div class="slide-content">
-                <h1>STEM Project 2025</h1>
-                <p>By Bola Wahba</p>
-                <img src="project-cover.jpg" alt="Project Cover">
-            </div>
-        </div>
-
-        <!-- Slide 2: Problem Description -->
-        <div class="slide" id="slide-2">
-            <div class="slide-content">
-                <h2>What Problem Needs to Be Solved?</h2>
-                <p>Access to sustainable and cost-effective cooking solutions is limited...</p>
-                <iframe src="https://www.youtube.com/embed/GrrVh_Ijv3k" title="YouTube Video"></iframe>
-            </div>
-        </div>
-
-        <!-- Slide 3: Design Requirements -->
-        <div class="slide" id="slide-3">
-            <div class="slide-content">
-                <h2>Design Requirements</h2>
-                <ul>
-                    <li>Efficient Heat Retention</li>
-                    <li>Light Reflection</li>
-                    <li>Insulation</li>
-                    <li>Compact and Lightweight</li>
-                </ul>
-                <img src="design-requirements-graph.jpg" alt="Graph Illustration">
-            </div>
-        </div>
-
-        <!-- Slide 4: Constraints -->
-        <div class="slide" id="slide-4">
-            <div class="slide-content">
-                <h2>Constraints</h2>
-                <p>Budget, materials, weather dependence, and heat limitation are key factors...</p>
-                <img src="constraints-chart.jpg" alt="Constraints Chart">
-            </div>
-        </div>
-
-        <!-- Slide 5: Brainstorm -->
-        <div class="slide" id="slide-5">
-            <div class="slide-content">
-                <h2>Brainstorm</h2>
-                <p>Pizza Box Solar Oven vs Shoebox Solar Oven</p>
-                <ul>
-                    <li>Pizza box chosen for simplicity and availability.</li>
-                </ul>
-                <img src="brainstorm-illustration.jpg" alt="Brainstorm Illustration">
-            </div>
-        </div>
-
-        <!-- Slide 6: Prototype -->
-        <div class="slide" id="slide-6">
-            <div class="slide-content">
-                <h2>Prototype</h2>
-                <p>Testing the pizza box solar oven with chocolate...</p>
-                <video src="prototype-demo.mp4" controls></video>
-            </div>
-        </div>
-
-        <!-- Slide 7: Conclusion -->
-        <div class="slide" id="slide-7">
-            <div class="slide-content">
-                <h2>Conclusion</h2>
-                <p>Pizza box solar ovens showcase the power of renewable energy.</p>
-                <img src="conclusion-illustration.jpg" alt="Solar Oven Illustration">
-            </div>
-        </div>
+  <!-- Slideshow container -->
+  <div class="slideshow" id="slideshow">
+    <!-- Slide 1 -->
+    <div class="slide slide1">
+      <div>
+        <h1>STEM Project: Solar Oven</h1>
+        <p>Welcome to the interactive presentation on solar ovens and their effectiveness.</p>
+      </div>
     </div>
 
-    <!-- Progress indicator -->
-    <div class="progress-container" id="progress-container"></div>
+    <!-- Slide 2: Graph 1 -->
+    <div class="slide slide2">
+      <div>
+        <h1>Improved Solar Oven Performance</h1>
+        <img src="Screenshot 2024-11-24 9.29.06 PM.png" alt="Graph showing improved solar oven performance">
+        <p>Temperature increase over 3 minutes in the improved solar oven prototype.</p>
+      </div>
+    </div>
 
-    <script>
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const progressContainer = document.getElementById('progress-container');
+    <!-- Slide 3: Graph 2 -->
+    <div class="slide slide3">
+      <div>
+        <h1>Baseline Solar Oven Performance</h1>
+        <img src="image.png" alt="Graph showing baseline solar oven performance">
+        <p>Temperature increase over 3 minutes in the baseline solar oven model.</p>
+      </div>
+    </div>
 
-        // Create progress dots
-        slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('progress-dot');
-            if (index === 0) dot.classList.add('active');
-            progressContainer.appendChild(dot);
-        });
+    <!-- Slide 4: Summary -->
+    <div class="slide slide4">
+      <div>
+        <h1>Summary</h1>
+        <p>The improved solar oven shows a faster temperature increase compared to the baseline model. This demonstrates significant performance enhancements due to design improvements.</p>
+      </div>
+    </div>
+  </div>
 
-        const progressDots = document.querySelectorAll('.progress-dot');
+  <div class="navigation-hint">
+    Use the left and right arrow keys to navigate through the slides.
+  </div>
 
-        const updateSlidePosition = () => {
-            slides.forEach((slide, index) => {
-                slide.style.transform = `translateX(${(index - currentSlideIndex) * 100}%)`;
-            });
+  <script>
+    // JavaScript for slide navigation
+    const slideshow = document.getElementById("slideshow");
+    const slides = document.querySelectorAll(".slide");
+    let currentIndex = 0;
 
-            // Update active dot
-            progressDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlideIndex);
-            });
-        };
+    // Function to update slide position
+    function updateSlidePosition() {
+      const offset = -currentIndex * 100; // Calculate offset
+      slideshow.style.transform = `translateX(${offset}%)`;
+    }
 
-        const navigateSlide = (direction) => {
-            if (direction === 'next' && currentSlideIndex < slides.length - 1) {
-                currentSlideIndex++;
-            } else if (direction === 'prev' && currentSlideIndex > 0) {
-                currentSlideIndex--;
-            }
-            updateSlidePosition();
-        };
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'ArrowRight') {
-                navigateSlide('next');
-            } else if (event.key === 'ArrowLeft') {
-                navigateSlide('prev');
-            }
-        });
-
-        // Initialize the slideshow
+    // Event listener for keydown
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") {
+        currentIndex = (currentIndex + 1) % slides.length; // Next slide
         updateSlidePosition();
-    </script>
+      } else if (event.key === "ArrowLeft") {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Previous slide
+        updateSlidePosition();
+      }
+    });
+  </script>
 </body>
 </html>
