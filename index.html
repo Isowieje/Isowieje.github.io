@@ -3,38 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEM Project 2025 Presentation</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>STEM Project 2025</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background: #f4f4f9;
+            color: #333;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+        }
+        .progress {
+            height: 100%;
+            background: #007BFF;
+            width: 0%;
+            transition: width 0.3s;
+        }
+    </style>
 </head>
 <body>
-    <div class="slides">
+    <!-- Slides -->
+    <div id="slides">
         <div class="slide active">
             <h1>STEM Project 2025</h1>
             <p>Bola Wahba</p>
             <p>304</p>
-            <p>Date: 11/25/2024</p>
+            <p>11/25/24</p>
         </div>
         <div class="slide">
-            <h2>What Problem Needs to be Solved?</h2>
-            <p>
-                Access to sustainable and cost-effective cooking solutions is limited in areas where 
-                conventional energy sources are scarce or expensive. Additionally, traditional cooking 
-                methods often rely on fuels like wood or gas, contributing to environmental degradation 
-                and air pollution. A solar oven addresses these challenges by harnessing sunlight as a 
-                clean, renewable energy source for cooking.
-            </p>
+            <h2>What problem needs to be solved?</h2>
+            <p>Access to sustainable and cost-effective cooking solutions is limited in areas where conventional energy sources are scarce or expensive.</p>
+            <p>Additionally, traditional cooking methods often rely on fuels like wood or gas, contributing to environmental degradation and air pollution.</p>
+            <p>A solar oven addresses these challenges by harnessing sunlight as a clean, renewable energy source for cooking.</p>
         </div>
         <div class="slide">
-            <h2>Design Requirements (Part 1)</h2>
+            <h2>Design Requirements pt 1</h2>
             <ul>
-                <li>Efficient Heat Retention: The oven must be able to trap and maintain heat effectively to cook food, such as chocolate, using only sunlight.</li>
+                <li>Efficient Heat Retention: The oven must trap and maintain heat effectively to cook food, such as chocolate, using only sunlight.</li>
                 <li>Light Reflection: Reflective surfaces must direct sunlight into the box to maximize heat.</li>
                 <li>Insulation: Proper insulation is needed to minimize heat loss and retain warmth inside the box.</li>
                 <li>Compact and Lightweight: The design must be portable and easy to set up.</li>
             </ul>
         </div>
         <div class="slide">
-            <h2>Design Requirements (Part 2)</h2>
+            <h2>Design Requirements pt 2</h2>
             <ul>
                 <li>Safety: The materials used should be safe to handle and pose no risk when exposed to heat.</li>
                 <li>Cost-Effectiveness: Use inexpensive, readily available materials like pizza boxes, foil, and plastic wrap.</li>
@@ -43,47 +83,31 @@
             </ul>
         </div>
         <div class="slide">
-            <h2>Constraints (Part 1)</h2>
+            <h2>Constraints pt 1</h2>
             <ul>
-                <li><strong>Budget:</strong> Affordable and sourced easily from household items or stores.</li>
-                <li><strong>Time:</strong> Construction should take under an hour; cooking time for marshmallows is approximately 30–40 minutes after preheating.</li>
-                <li><strong>Materials:</strong> Lightweight, low-cost materials like cardboard, aluminum foil, plastic wrap, and duct tape.</li>
-                <li><strong>Weather Dependence:</strong> Relies entirely on sunlight and is ineffective in cloudy or rainy weather.</li>
+                <li>Budget: The materials must be affordable and sourced easily from household items or stores.</li>
+                <li>Time: Construction should take under an hour; cooking time for marshmallows is 30–40 minutes after preheating.</li>
+                <li>Materials: Lightweight, low-cost materials like cardboard, aluminum foil, plastic wrap, and duct tape must withstand heat without melting or releasing harmful substances.</li>
+                <li>Weather Dependence: Solar oven relies entirely on sunlight, making it ineffective in cloudy or rainy weather.</li>
             </ul>
         </div>
         <div class="slide">
-            <h2>Constraints (Part 2)</h2>
+            <h2>Constraints pt 2</h2>
             <ul>
-                <li>Size: Large enough to accommodate food items like chocolate but small enough to maintain heat efficiently.</li>
-                <li>Heat Limitation: Oven reaches moderate temperatures, limiting cooking to lightweight or simple items.</li>
-                <li>User Skill Level: Simple enough for children to build with adult supervision.</li>
+                <li>Size: The oven must be large enough to accommodate food items like chocolate but small enough to maintain heat efficiently.</li>
+                <li>Heat Limitation: Only moderate temperatures, restricting cooking to lightweight items like chocolate.</li>
+                <li>User Skill Level: Simple enough for young participants (e.g., children working with adult supervision).</li>
             </ul>
         </div>
         <div class="slide">
-            <h2>Brainstorm: Pizza Box Solar Oven</h2>
-            <p>
-                Description: A pizza box with aluminum foil lining on the bottom and inside of the lid flap, 
-                black construction paper on the base for heat absorption, and a plastic wrap cover to trap heat. 
-                The reflective insulation on the lid flap focuses sunlight into the box.
-            </p>
-            <p><strong>Strengths:</strong> Simple to build and uses common materials.</p>
-            <p><strong>Ideal Use:</strong> For light cooking, such as melting chocolate.</p>
+            <h2>Brainstorm</h2>
+            <p><b>Pizza Box Solar Oven:</b> A pizza box with aluminum foil lining on the bottom and lid flap, black construction paper on the base, and plastic wrap cover to trap heat.</p>
+            <p><b>Strengths:</b> Simple to build and uses common materials.</p>
+            <p><b>Ideal Use:</b> Light cooking, such as melting chocolate.</p>
         </div>
         <div class="slide">
-            <h2>Brainstorm: Shoebox Solar Oven</h2>
-            <p>
-                Description: A shoebox with black construction paper lining the interior, aluminum foil reflectors 
-                around the edges, and plastic wrap sealing the top opening to trap heat.
-            </p>
-            <p><strong>Strengths:</strong> Compact and easy to adjust reflectors.</p>
-            <p><strong>Ideal Use:</strong> Great for quick experiments with smaller food items.</p>
-        </div>
-        <div class="slide">
-            <h2>Discussion: Why I Chose This Design</h2>
-            <p>
-                I chose the pizza box solar oven design over the shoebox design because I didn’t have a shoebox 
-                available, and pizza boxes are often easy to get for free if you simply ask.
-            </p>
+            <h2>Discussion</h2>
+            <p>I chose the pizza box solar oven design over the shoebox design because I didn’t have a shoebox available, and pizza boxes are often easy to get for free if you simply ask.</p>
         </div>
         <div class="slide">
             <h2>Equipment/Materials</h2>
@@ -102,49 +126,39 @@
                 <li>Black construction paper</li>
             </ul>
         </div>
-        <div class="slide">
-            <h2>Procedure (Part 1)</h2>
-            <p><strong>Prepare the Pizza Box:</strong> Draw three straight lines on the top of the pizza box to outline a flap. Use a utility knife to cut along these lines and fold the flap along the fourth side to create an adjustable lid.</p>
-            <p><strong>Add Aluminum Foil for Insulation:</strong> Cut two pieces of aluminum foil to fit the bottom of the pizza box. Attach the foil to the bottom of the box using black duct tape or aluminum foil tape.</p>
-        </div>
-        <div class="slide">
-            <h2>Procedure (Part 2)</h2>
-            <p><strong>Add a Heat-Absorbing Surface:</strong> Cut two pieces of black construction paper and glue them to the bottom of the box on top of the aluminum foil. This black surface absorbs heat from the sunlight.</p>
-            <p><strong>Seal the Box with Plastic Wrap:</strong> Cut two pieces of plastic wrap large enough to cover the hole created by the flap in the pizza box. Tape one piece of plastic wrap over the hole on the inside of the box and the second piece over the hole on the outside. Ensure the plastic wrap is tight to trap heat inside the oven.</p>
-        </div>
-        <div class="slide">
-            <h2>Testing First Prototype</h2>
-            <p>
-                A piece of chocolate was placed on a paper plate and sealed inside the solar oven 
-                with plastic wrap to trap heat. The black construction paper absorbed sunlight, 
-                and the plastic wrap helped retain the heat, letting the chocolate melt despite 
-                not preheating the oven.
-            </p>
-        </div>
-        <div class="slide">
-            <h2>Graph or Chart</h2>
-            <p>
-                Refer to: <a href="https://www.youtube.com/shorts/GrrVh_Ijv3k" target="_blank">Graph or Chart Video</a>
-            </p>
-        </div>
-        <div class="slide">
-            <h2>Redesign</h2>
-            <p>
-                I improved my design by adding more aluminum foil than necessary. I also added a straw 
-                to hold up the flap so it doesn't fly away.
-            </p>
-        </div>
-        <div class="slide">
-            <h2>Conclusion</h2>
-            <p>
-                Pizza box solar ovens are an excellent example of how simple materials can be used 
-                to harness solar energy effectively. They work by combining principles of reflection, 
-                insulation, and absorption to convert sunlight into heat, which can cook or warm food. 
-                These ovens are inexpensive, eco-friendly, and easy to build, promoting awareness of 
-                renewable energy.
-            </p>
-        </div>
+        <!-- Add more slides here for the rest of the content -->
     </div>
-    <script src="script.js"></script>
+
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const progress = document.getElementById('progress');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) slide.classList.add('active');
+            });
+            const progressPercent = ((index + 1) / slides.length) * 100;
+            progress.style.width = progressPercent + '%';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                currentSlide = Math.min(currentSlide + 1, slides.length - 1);
+                showSlide(currentSlide);
+            } else if (e.key === 'ArrowLeft') {
+                currentSlide = Math.max(currentSlide - 1, 0);
+                showSlide(currentSlide);
+            }
+        });
+
+        // Initial display
+        showSlide(currentSlide);
+    </script>
 </body>
 </html>
